@@ -3,5 +3,5 @@ services:
     build: .
     container_name: word-cloud
     volumes:
-      - ./InputFiles:/app/InputFiles:ro
+      - ./InputFiles:/app/InputFiles
       - ./OutputFile:/app/OutputFile

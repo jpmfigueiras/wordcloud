@@ -28,9 +28,14 @@ python3 Script/word_cloud.py
 - Words that appear only once are removed.
 
 ## Docker
-Build and run:
+First run (or after code/Dockerfile changes):
 ```bash
 docker compose up --build
+```
+
+After changing only `InputFiles/`:
+```bash
+docker compose up
 ```
 
 Stop and remove the container:
