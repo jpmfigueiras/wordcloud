@@ -9,10 +9,26 @@
 - `src/` contains the code (`wordcloud.py` and `generic_functions.py`).
 
 ## How to run
+# Terminal
 From the project root in a terminal:
 
 ```bash
 python3 src/wordcloud.py
+```
+# Docker
+From the project root first run (or after code/Dockerfile changes):
+```bash
+docker compose up --build
+```
+
+If you change only the files in `InputFiles/`:
+```bash
+docker compose up
+```
+
+Stop and remove the container:
+```bash
+docker compose down
 ```
 
 ## Output
@@ -27,18 +43,4 @@ python3 src/wordcloud.py
   `[A-Za-zÀ-ÖØ-öø-ÿ]+`
 - Words that appear only once are removed.
 
-## Docker
-First run (or after code/Dockerfile changes):
-```bash
-docker compose up --build
-```
 
-If you change only the files in `InputFiles/`:
-```bash
-docker compose up
-```
-
-Stop and remove the container:
-```bash
-docker compose down
-```
