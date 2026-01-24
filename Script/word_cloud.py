@@ -57,8 +57,6 @@ def main():
         total = merge_counts(results)
         # Filter out words with frequency less than 2.
         total = filter_counts(total, min_count=2)
-        if(not total):
-            raise RuntimeError("No words with frequency greater than 1.")
         # Determine the maximum word count for size categorization.
         max_count = max(total.values())
         # Sort words by frequency and prepare items for the report.

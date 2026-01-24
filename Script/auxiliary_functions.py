@@ -165,7 +165,13 @@ def filter_counts(counts, min_count=2):
     '''
     try:
         # Filter the counts dictionary to include only words with counts >= min_count.
-        return {word: count for word, count in counts.items() if(count >= min_count)}
+        total = {word: count for word, count in counts.items() if(count >= min_count)}
+        # Raise an exception when no words meet the required minimum count.
+        if(not total):
+            raise RuntimeError(f"No words with frequency greater than {min_count}.")
+        return total
+    except RuntimeError:
+        raise
     except Exception as e:
         raise RuntimeError("Error filtering word counts.") from e
 
