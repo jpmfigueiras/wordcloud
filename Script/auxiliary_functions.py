@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 '''
-@File    :   generic_functions.py
+@File    :   auxiliary_functions.py
 @Author  :   Joel Figueiras
 @Version :   1.0
-@Desc    :   Provides generic functions for text processing and word cloud generation.
+@Desc    :   Provides auxiliary functions for text processing and word cloud generation.
 '''
 
 import os
 
 
-def font_size_for(count, max_count):
+def font_size(count, max_count):
     '''
     Determines the font size category based on the word count and maximum count.
 
@@ -22,18 +22,22 @@ def font_size_for(count, max_count):
         ------------
         str: The font size category ("Huge", "Big", "Normal", "Small").
     '''
-    # Determine font size based on frequency ratio. 
+    # Determine font size based on frequency ratio.
     # If count equals max_count, the word is the most frequent.
     # pylint: disable=superfluous-parens
-    if(count == max_count):
-        return "Huge"
-    # Calculate the ratio of the word's count to the maximum count.
-    ratio = count / max_count
-    if(ratio > 0.6):
-        return "Big"
-    if(ratio > 0.3):
-        return "Normal"
-    return "Small"
+    try:
+        # Check if the word has the maximum count.
+        if(count == max_count):
+            return "Huge"
+        # Calculate the ratio of the word's count to the maximum count.
+        ratio = count / max_count
+        if(ratio > 0.6):
+            return "Big"
+        if(ratio > 0.3):
+            return "Normal"
+        return "Small"
+    except Exception as e:
+        raise RuntimeError("Error calculating font size.") from e
 
 def list_files(folder, ext=".txt"):
     '''
@@ -165,25 +169,6 @@ def filter_counts(counts, min_count=2):
     except Exception as e:
         raise RuntimeError("Error filtering word counts.") from e
 
-def size_label(freq, max_freq):
-    '''
-    Returns the size label based on frequency thresholds.
-
-    Parameters:
-        ------------
-        freq(int): Word frequency.
-        max_freq(int): Maximum word frequency.
-
-    Returns:
-        ------------
-        str: Size label ("Huge", "Big", "Normal", "Small").
-    '''
-    try:
-        # Utilize the font_size_for function to determine the size label.
-        return font_size_for(freq, max_freq)
-    except Exception as e:
-        raise RuntimeError("Error calculating size label.") from e
-
 def sorted_counts(counts):
     '''
     Returns a list of (word, freq) pairs sorted by frequency desc and word asc.
@@ -221,6 +206,22 @@ def write_report(items, output_path):
     except Exception as e:
         raise RuntimeError(f"Error writing report to {output_path}: {e}") from e
 
+def write_error(error_message, error_path):
+    '''
+    Writes an error message to a specified error file.
+
+    Parameters:
+        ------------
+        error_message(str): The error message to write.
+        error_path(str): Path to the error file.
+    '''
+    try:
+        # Write the error message to the specified error file.
+        with open(error_path, "w", encoding="utf-8") as file:
+            file.write(error_message)
+    except Exception as e:
+        raise RuntimeError(f"Error writing error message to {error_path}: {e}") from e
+
 def process_file(path, pattern):
     '''
     Reads text from a file, extracts words, lowercases them, and counts occurrences.
@@ -240,4 +241,47 @@ def process_file(path, pattern):
         return count_words(words)
     except Exception as e:
         raise RuntimeError(f"Error processing file {path}: {e}") from e
-    
+
+def return_full_directory(dir_name):
+    '''
+    Returns the full path to a directory given its name.
+
+    Parameters:
+        ------------
+        dir_name(str): Name of the directory.
+
+    Returns:
+        ------------
+        str: Path to the directory.
+    '''
+    try:
+        if(dir_name is None or dir_name.strip() == ""):
+            raise ValueError("Directory name must be a non empty string.")
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        return os.path.join(base_dir, dir_name)
+    except Exception as e:
+        raise RuntimeError(f"Error determining directory path: {dir_name} ") from e
+
+
+def return_output_path(file_name, output_dir_name):
+    '''
+    Returns the full path to the output file.
+
+    Parameters:
+        ------------
+        file_name(str): Name of the output file.
+        output_dir_name(str): Name of the output directory.
+
+    Returns:
+        ------------
+        str: Path to the output file.
+    '''
+    try:
+        if(file_name is None or file_name.strip() == ""):
+            raise ValueError("File name must be a non empty string.")
+        if(output_dir_name is None or output_dir_name.strip() == ""):
+            raise ValueError("Output directory name must be a non empty string.")
+        output_dir = return_full_directory(output_dir_name)
+        return os.path.join(output_dir, file_name)
+    except Exception as e:
+        raise RuntimeError("Error determining output file path.") from e
