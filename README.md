@@ -28,15 +28,12 @@ python3 Script/word_cloud.py
 - Words that appear only once are removed.
 
 ## Docker
-Build the image:
+Build and run:
 ```bash
-docker build -t word-cloud .
+docker compose up --build
 ```
 
-Run with volumes (reads `InputFiles/` and writes to `OutputFile/` on the host):
+Stop and remove the container:
 ```bash
-docker run \
-  -v "$PWD/InputFiles:/app/InputFiles" \
-  -v "$PWD/OutputFile:/app/OutputFile" \
-  word-cloud
+docker compose down
 ```

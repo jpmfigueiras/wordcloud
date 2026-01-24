@@ -1,0 +1,7 @@
+services:
+  word-cloud:
+    build: .
+    container_name: word-cloud
+    volumes:
+      - ./InputFiles:/app/InputFiles:ro
+      - ./OutputFile:/app/OutputFile
