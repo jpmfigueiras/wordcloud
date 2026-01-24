@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 '''
-@File    :   word_cloud.py
+@File    :   wordcloud.py
 @Author  :   Joel Figueiras
 @Version :   1.0
 @Desc    :   Generates a word cloud report from multiple text files.
@@ -40,7 +40,7 @@ def main():
         # Define output directory and file path relative to the base directory.
         output_dir = return_full_directory(dir_name="OutputFile")
         # Define the output file path within the output directory.
-        output_path = return_output_path(file_name="word_cloud.txt", output_dir_name="OutputFile")
+        output_path = return_output_path(file_name="wordcloud.txt", output_dir_name="OutputFile")
         # Collect all .txt files from the input directory.
         files = list_files(input_dir, ext=".txt")
         # Regular expression to match words including accented characters.
@@ -67,14 +67,14 @@ def main():
         os.makedirs(output_dir, exist_ok=True)
         # Write the word cloud report to the output file.
         write_report(items, output_path)
-        print(f"Word cloud written to: {output_path}")
+        print("Output saved to OutputFile/wordcloud.txt")
     except RuntimeError as exc:
         # Ensure the output directory exists, if not, create it.
         os.makedirs(output_dir, exist_ok=True)
         error_path = return_output_path(file_name="errors.txt", output_dir_name="OutputFile")
         # On error, write the error message to errors.txt in the output directory.
         write_error(error_message=str(exc), error_path=error_path)
-        print(f"Error written to: {error_path}")
+        print("Error written to OutputFile/errors.txt")
 
 if __name__ == "__main__":
     main()

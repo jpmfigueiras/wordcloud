@@ -6,24 +6,24 @@
 ## Folder structure
 - `InputFiles/` place the `.txt` files here (minimum 5).
 - `OutputFile/` receives the output.
-- `Script/` contains the code (`word_cloud.py` and `generic_functions.py`).
+- `src/` contains the code (`wordcloud.py` and `generic_functions.py`).
 
 ## How to run
 From the project root in a terminal:
 
 ```bash
-python3 Script/word_cloud.py
+python3 src/wordcloud.py
 ```
 
 ## Output
-- `OutputFile/word_cloud.txt` with lines in the format:
+- `OutputFile/wordcloud.txt` with lines in the format:
   `word<TAB>frequency<TAB>size`
-- If a `RuntimeError` occurs, it creates:
+- If any error occurs during execution, the error are logged to the output file, it creates:
   `OutputFile/errors.txt`
-- The output file is overwritten on each run (not appended).
+- The errors file is overwritten on each run (not appended).
 
 ## Notes
-- The regex used to split words is in `Script/word_cloud.py`:
+- The regex used to split words is in `src/wordcloud.py`:
   `[A-Za-zÀ-ÖØ-öø-ÿ]+`
 - Words that appear only once are removed.
 
