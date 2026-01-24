@@ -44,14 +44,14 @@ def main():
         # Collect all .txt files from the input directory.
         files = list_files(input_dir, ext=".txt")
         # Regular expression to match words including accented characters.
-        WORD_REGEX = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿ]+")
+        word_regex = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿ]+")
         # Ensure there are at least 5 input files.
         if(len(files) < 5):
             raise RuntimeError("Need at least 5 input text files.")
         # Process each text file in parallel, using one worker per file.
         # Each task extracts and counts words independently.
         with ThreadPoolExecutor(max_workers=len(files)) as executor:
-            futures = [executor.submit(process_file, path, WORD_REGEX) for path in files]
+            futures = [executor.submit(process_file, path, word_regex) for path in files]
             results = [future.result() for future in as_completed(futures)]
         # Merge individual word counts from all files into a total count.
         total = merge_counts(results)
