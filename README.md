@@ -33,7 +33,7 @@ First run (or after code/Dockerfile changes):
 docker compose up --build
 ```
 
-After changing only `InputFiles/`:
+If you change only the files in `InputFiles/`:
 ```bash
 docker compose up
 ```
