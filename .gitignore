@@ -8,3 +8,6 @@ __pycache__/
 # Output (generated files)
 OutputFile/*
 !.gitkeep
+
+# VS Code
+.vscode/
