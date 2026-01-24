@@ -9,13 +9,13 @@
 - `src/` contains the code (`wordcloud.py` and `generic_functions.py`).
 
 ## How to run
-# Terminal
+### Terminal
 From the project root in a terminal:
 
 ```bash
 python3 src/wordcloud.py
 ```
-# Docker
+### Docker
 From the project root first run (or after code/Dockerfile changes):
 ```bash
 docker compose up --build
