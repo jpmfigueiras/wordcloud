@@ -8,27 +8,6 @@
 
 import os
 
-def read_words(path,regex):
-    '''
-    Reads words from a file at the given path using the provided regex pattern.
-    
-    Parameters:
-        ------------
-        path(str): Path to the input text file.
-        regex(re.Pattern): Compiled regular expression pattern to match words.
-    
-    Returns:
-        ------------
-        list: A list of words extracted from the file, all in lowercase.
-    '''
-    try:
-        # Read the file content
-        with open(path, "r", encoding="utf-8") as file:
-            text = file.read()
-        # Find all words using the provided regex and convert them to lowercase.
-        return [word.lower() for word in regex.findall(text)]
-    except Exception as e:
-        raise RuntimeError(f"Error reading words from {path}: {e}") from e
 
 def font_size_for(count, max_count):
     '''
