@@ -13,7 +13,7 @@
 From the project root in a terminal:
 
 ```bash
-py src/wordcloud.py
+python src/wordcloud.py
 ```
 ### Docker
 From the project root first run (or after code/Dockerfile changes):
