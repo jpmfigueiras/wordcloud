@@ -22,17 +22,18 @@ It is written in plain Python with no third-party dependencies and can run eithe
 
 ## Example output
 
-`OutputFile/wordcloud.txt` is tab-separated: `word`, `frequency`, `size`.
+`OutputFile/wordcloud.txt` is tab-separated: `word`, `frequency`, `size`. Words that tie for the top frequency all get `Huge`. With the sample texts included in the repository:
 
 ```
-a           39   Huge
-de          35   Big
-e           28   Big
-and         23   Normal
-to          16   Normal
-data        15   Normal
-segurança   10   Small
-security     9   Small
+de            11   Huge
+the           11   Huge
+a             10   Big
+and            7   Big
+uma            5   Normal
+dados          4   Normal
+application    3   Small
+team           3   Small
+code           2   Small
 ```
 
 ## Running it
@@ -63,7 +64,7 @@ Every helper wraps its failure in a `RuntimeError` with a descriptive message. I
 
 ```
 wordcloud/
-├── InputFiles/               # input .txt files (sample texts included)
+├── InputFiles/               # input .txt files (six short sample texts in Portuguese and English)
 ├── OutputFile/               # generated report and error log
 ├── src/
 │   ├── wordcloud.py          # entry point: orchestration and parallel processing

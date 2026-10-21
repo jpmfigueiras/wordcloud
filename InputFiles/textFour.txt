@@ -1,0 +1,1 @@
+Good software is easy to read and easy to change. Small functions, clear names and automated tests help a team move fast without breaking things. When the code is simple, new people on the team can understand it and start contributing quickly.

@@ -1,0 +1,1 @@
+A segurança de uma aplicação web começa no desenho da arquitetura. Validar os dados de entrada, proteger as sessões e guardar as passwords com algoritmos adequados são práticas que reduzem o risco. A segurança deve ser pensada desde o início e não apenas no fim do projeto.

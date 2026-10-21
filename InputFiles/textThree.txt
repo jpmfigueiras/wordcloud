@@ -1,0 +1,1 @@
+Uma base de dados bem desenhada facilita o trabalho de toda a equipa. As tabelas devem ter nomes claros, os índices devem servir as consultas mais frequentes e os dados sensíveis devem ser protegidos. Uma base de dados lenta torna toda a aplicação lenta.

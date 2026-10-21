@@ -1,0 +1,1 @@
+O desenvolvimento de software é uma atividade de equipa. Uma boa equipa escreve código simples, revê o código dos colegas e testa cada alteração antes de a colocar em produção. O código simples é mais fácil de ler, de testar e de manter ao longo do tempo.

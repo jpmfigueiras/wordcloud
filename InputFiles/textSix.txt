@@ -1,0 +1,1 @@
+Containers make it easy to run the same application on any machine. A container image packages the code, the runtime and the dependencies, so the application behaves the same way in development, in testing and in production.

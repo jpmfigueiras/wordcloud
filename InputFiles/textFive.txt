@@ -1,0 +1,1 @@
+Security is part of the design, not a feature added at the end. A web application should validate every input, protect every session and store passwords with a strong hashing algorithm. Logging and monitoring help the team detect problems early.
